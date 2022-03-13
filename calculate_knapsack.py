@@ -7,6 +7,7 @@ To calculate a result of the knapsack problem where the input is:
 * A capacity represented by a number
 Run the following to get the algorithm's result:
 print(calculate_knapsack(values_array, sizes_array, number))
+You can change line 133 to change the input as you wish.
 """
 
 
@@ -126,5 +127,12 @@ def calculate_knapsack(values, sizes, capacity):
     return best_solution[0], final_items
 
 
-print(calculate_knapsack([12, 10, 7], [10, 7, 6], 12.5))
-print(calculate_knapsack([12, 10, 7], [10, 7, 6], 14))
+def main():
+    # print(calculate_knapsack([12, 10, 7], [10, 7, 6], 12.5))
+    # print(calculate_knapsack([12, 10, 7], [10, 7, 6], 14))
+    max_value, final_items = calculate_knapsack([12, 10, 7], [10, 7, 6], 12.5)
+    print(f"The max value was {str(max_value)}, the repartition of the items was {str(final_items)}.")
+
+
+if __name__ == "__main__":
+    main()
