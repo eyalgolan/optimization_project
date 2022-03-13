@@ -17,6 +17,10 @@ class Estimator:
         self.num_of_values = len(values)
 
     def get_best_relaxed_value(self, index, capacity):
+        """
+        Performs an estimation of the largest value of the sum of all values that can be put in the bag, according to
+        the ratio we previously calculated.
+        """
         best_value = 0
         capa = 0
         for i in range(index, self.num_of_values):
@@ -30,7 +34,7 @@ class Estimator:
 
 def build_efficiency_dict(values, sizes, num_values):
     """
-    sort value and size by decreasing efficiency
+    sort value and size by decreasing efficiency.
     """
     efficiency = [(values[index], sizes[index], index, values[index] / sizes[index]) for index in range(num_values)]
     dtype = [('value', float), ('size', float), ('index', int), ('ratio', float)]
@@ -42,6 +46,10 @@ def build_efficiency_dict(values, sizes, num_values):
 
 
 def build_sorted_and_hash_table(num_values, efficiency):
+    """
+    Build a new list where the i'th item holds the value, size and index that represents it and the additional
+    calculated param.
+    """
     sorted_values = []
     sorted_size = []
     hash_table = []
@@ -81,6 +89,7 @@ def go_over_dp(dp, dp_second, sorted_size, sorted_values, capacity, index, estim
 
 def take_the_best(num_values, hash_table, best_solution):
     """
+    Convert the indexes and return the result of the problem.
     """
     final_items = np.zeros(num_values, 'int')
     for index in range(num_values):
@@ -90,7 +99,7 @@ def take_the_best(num_values, hash_table, best_solution):
 
 def calculate_knapsack(values, sizes, capacity):
     """
-    Compute the optimum knapsack according to the given values, sizes and capacity
+    Compute the optimum knapsack according to the given values, sizes and capacity.
     :param values: list of values
     :param sizes: list of sizes
     :param capacity: the capacity of the knapsack
